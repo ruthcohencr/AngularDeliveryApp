@@ -1,0 +1,17 @@
+.container{
+    background-color: rgb(66,97,144);
+    width:50%;
+    height: 2%;
+}
+
+#pageTitle{
+    color: white;
+    text-align: center;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+}
