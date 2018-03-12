@@ -6,13 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./splash-screen.component.css']
 })
 export class SplashScreenComponent implements OnInit {
-  splashTitle: string;
 
-  constructor() {
-    this.splashTitle = "SUPPLIER DELIVERY";
-   }
 
-  ngOnInit() {
-  }
+splashTitle: string;
+
+constructor() {
+  this.splashTitle = "SUPPLIER DELIVERY";
+}
+
+ngOnInit() {
+}
 
 }

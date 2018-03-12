@@ -1,3 +1,29 @@
-<p>
-  main-screen works!
-</p>
+<div class="container">
+  <div class="header">
+    <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
+    <p>Future Orders</p>
+    <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
+  </div>
+
+  
+    <ul *ngFor="let client of clientCollection; let i = index">
+      <button id="container" (click)="onCardClicked(client)">
+        <div id="cardHeader">
+
+          <div class="allDate">
+            <div>{{setDayName(client)}}</div>
+            <div> {{setEstimatedDate(client)}}</div>
+          </div>
+
+          <div>
+            <div class="arrive">Arrive between</div>
+            <div class="arriveHour"> {{setClientFrom(client)}} {{setClientTo(client)}}</div>
+          </div>
+
+        </div>
+        <div id="cardBody">
+          {{client.id}} {{client["client"].name}}
+        </div>
+      </button>
+    </ul>
+  </div>

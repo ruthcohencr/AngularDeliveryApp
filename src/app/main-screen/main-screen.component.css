@@ -1,0 +1,87 @@
+#container {
+    width: 100%;
+    align-self: center;
+    justify-content: center;
+    background-color: #fff;
+    border-bottom-width: 2px;
+    border-bottom-color: white;
+    border-radius: 4px;
+    border-Width: 2.5px;
+    border-color: #d6d7da;
+    margin-Bottom: 5px;
+    padding-Bottom: 15px;
+    margin-right: 10px;
+}
+
+.header{
+    background-color: rgb(66,97,144);
+    display: flex;
+    direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+#cardHeader {  
+    display: flex;
+    background-color: rgb(44,183,161);
+    align-Self: stretch;
+    justify-Content: space-between;
+    padding-Right: 7px;
+    padding-Left: 7px;
+    padding-Top: 7px;
+    padding-Bottom: 7px;    
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px 5px 5px;
+    background-color:lightblue;
+    width: 35%;
+    align-items: stretch;
+    justify-Content: center;
+    
+    border-bottom-width: 2px;
+    border-bottom-color: white;
+    border-radius: 4px;
+    border-Width: 2.5px;
+    border-color: #d6d7da;
+    margin-Bottom: 5px;
+    padding-Bottom: 15px;
+}
+
+.allDate {
+    flex-direction: column;
+    color: white;
+    font-Size: 20;
+    font-Weight: bold;
+    padding-Right: 7,
+}
+
+.arrive {
+    color: white;
+    font-Size: 20;
+    padding-Left: 7;
+}
+
+.arriveHour {
+    color: white;
+    font-Size: 20;
+    font-Weight: 'bold';
+    padding-Left: 7;
+    align-Self: center,
+}
+
+#cardBody {
+    flex: 1;
+    flex-Direction: row;
+    justify-Content: space-between;
+    align-Self: stretch;
+    padding-Left: 7px;
+    padding-Top: 7px;
+    padding-Right: 20px;
+}

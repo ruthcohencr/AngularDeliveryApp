@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { MainScreenComponent } from './main-screen/main-screen.component';
 import { DeliveryscreenComponent } from './deliveryscreen/deliveryscreen.component';
+import { ClientService } from './services/clients.service';
+import { WeekService } from './services/week.service';
 
 const appRoutes : Routes = [
   { path: "splash-screen", component: SplashScreenComponent },
@@ -23,9 +26,10 @@ const appRoutes : Routes = [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ ClientService, WeekService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
