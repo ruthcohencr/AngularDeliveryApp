@@ -1,15 +1,22 @@
 .container{
     background-color: rgb(66,97,144);
     width:50%;
-    height: 2%;
+    height: 100%;
+    position: absolute;  
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #pageTitle{
-    color: white;
-    text-align: center;
+    color: white; 
 }
 
-.center {
+#icon{
+   align-self: center;
+}
+.gcenter {
     display: block;
     margin-left: auto;
     margin-right: auto;
