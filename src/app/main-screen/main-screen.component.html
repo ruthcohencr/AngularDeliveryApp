@@ -5,25 +5,31 @@
     <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
   </div>
 
-  
-    <ul *ngFor="let client of clientCollection; let i = index">
-      <button id="container" (click)="onCardClicked(client)">
-        <div id="cardHeader">
 
-          <div class="allDate">
-            <div>{{setDayName(client)}}</div>
-            <div> {{setEstimatedDate(client)}}</div>
-          </div>
+  <ul *ngFor="let client of clientCollection; let i = index">
+    <button id="container" (click)="onCardClicked(client)">
+      <div id="cardHeader">
 
-          <div>
-            <div class="arrive">Arrive between</div>
-            <div class="arriveHour"> {{setClientFrom(client)}} {{setClientTo(client)}}</div>
-          </div>
-
+        <div class="allDate">
+          <div>{{setDayName(client)}}</div>
+          <div> {{setEstimatedDate(client)}}</div>
         </div>
-        <div id="cardBody">
-          {{client.id}} {{client["client"].name}}
+
+        <div>
+          <div class="arrive">Arrive between</div>
+          <div class="arriveHour"> {{setClientFrom(client)}} {{setClientTo(client)}}</div>
         </div>
-      </button>
-    </ul>
-  </div>
+
+      </div>
+      <div id="cardBody">
+        <div>
+          <div>{{client["client"].name}}</div>
+          <div>{{client.address.street}} {{client.address.city}} {{client.address.number}}, {{client.address.city}} </div>
+        </div>
+        <div id="imageOfCard">
+          <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
+        </div>
+      </div>
+    </button>
+  </ul>
+</div>

@@ -77,11 +77,15 @@
 }
 
 #cardBody {
-    flex: 1;
-    flex-Direction: row;
-    justify-Content: space-between;
-    align-Self: stretch;
+    display: flex;
+    flex-Direction: row;  
+    text-align: left;
     padding-Left: 7px;
     padding-Top: 7px;
     padding-Right: 20px;
+    justify-content: space-between;
+}
+
+#imageOfCard{
+
 }
