@@ -1,11 +1,11 @@
-<div class="container">
+<div class="myContainer">
   <div class="header">
-    <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
+    <img width="40px" src='assets/Images/navIcon.png' alt="navigation icon">
     <p>Future Orders</p>
-    <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
+    <img width="40px" src='assets/Images/navIcon.png' alt="navigation icon">
   </div>
 
-
+<div style="overflow: scroll">
   <ul *ngFor="let client of clientCollection; let i = index">
     <button id="container" (click)="onCardClicked(client)">
       <div id="cardHeader">
@@ -22,14 +22,13 @@
 
       </div>
       <div id="cardBody">
+        <app-client-detils [currentClient]="client"></app-client-detils>
         <div>
-          <div>{{client["client"].name}}</div>
-          <div>{{client.address.street}} {{client.address.city}} {{client.address.number}}, {{client.address.city}} </div>
-        </div>
-        <div id="imageOfCard">
-          <img width="50px" src='assets/Images/navIcon.png' alt="navigation icon">
+          <img id="circle" width="35px" src='assets/Images/navIcon.png' alt="navigation icon">
         </div>
       </div>
     </button>
   </ul>
+  </div>
+
 </div>

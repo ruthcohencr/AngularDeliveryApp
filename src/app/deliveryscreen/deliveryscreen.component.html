@@ -1,3 +1,13 @@
-<p>
-  deliveryscreen works!
-</p>
+<div class="myContainer">
+  <div class="mapArea">
+    <app-google-map></app-google-map>
+  </div>
+  <div class="clientDetails">
+    <div>
+     <app-client-detils ngDefaultControl [currentClient]='currentClient' [(ngModel)]="currentClient"></app-client-detils>
+    </div>
+  </div>
+  <div class="arrivalDetails">
+    deliveryscreen works!
+  </div>
+</div>

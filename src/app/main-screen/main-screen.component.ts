@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ClientService } from '../services/clients.service';
 import { Client } from '../models/client.model';
 import { WeekService } from '../services/week.service';
 import { Router } from '@angular/router';
+import { ClientDetilsComponent } from '../client-detils/client-detils.component';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-main-screen',
@@ -11,11 +13,18 @@ import { Router } from '@angular/router';
 })
 export class MainScreenComponent implements OnInit {
 
-
+  selectedClient: Client;
   clientCollection: Client[];
-  constructor(private clientsService: ClientService, private weekService: WeekService, 
+
+  @Output()
+  clientClicked: EventEmitter<Client> = new EventEmitter<Client>();
+
+  constructor(private clientsService: ClientService,
+    private weekService: WeekService,
+    private sharedService: SharedService,
     private router: Router) {
 
+    this.selectedClient = new Client();
     this.clientCollection = clientsService.getClients();
     this.weekService = weekService;
     this.router = router;
@@ -49,8 +58,20 @@ export class MainScreenComponent implements OnInit {
     return result;
   }
 
-  onCardClicked(client: Client):void{
-      this.router.navigateByUrl('/delivery-screen');
+  onCardClicked(client: Client): void {
+    this.selectedClient = client;
+  //  debugger;
+    console.log("from mainScreen " + this.selectedClient.client.name);
+    //////////////////////////////////////////////////////////
+    //I dont user this emit function, instead I use shared service
+    //this.clientClicked.emit(client);
+    ////////////////////////////////////
+    
+    //send selected client to shared service
+    //shared between appComponent to mainScreenComponent
+    this.sharedService.emitChange(client);
+
+    this.router.navigateByUrl('/delivery-screen');
   }
 
   ngOnInit() {

@@ -1,0 +1,30 @@
+.myContainer{
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    width: 30%;
+    align-items: stretch;
+    justify-Content: center;
+    height: 80%;
+    position: absolute;
+    border-style: solid;
+    border-radius: 2px;
+    border-Width: 2px;
+    border-color: #5f85f7;
+    margin-top: 5px;
+}
+
+.mapArea{
+    flex:4;
+    background-color: white;
+}
+
+.clientDetails{
+    flex:2;
+    background-color: blueviolet;
+}
+
+.arrivalDetails{
+    flex:2;
+    background-color: crimson;
+}

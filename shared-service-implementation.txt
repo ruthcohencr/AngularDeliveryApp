@@ -1,0 +1,110 @@
+shared.service.ts
+
+import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { Client } from '../models/client.model';
+
+@Injectable()
+export class SharedService {
+    // Observable string sources
+    private emitChangeSource = new Subject<Client>();
+    // Observable string streams
+    changeEmitted$ = this.emitChangeSource.asObservable();
+    // Service message commands
+    emitChange(change: Client) {
+        this.emitChangeSource.next(change);
+    }
+}
+
+
+main-screen-component
+
+constructor(private clientsService: ClientService,
+    
+	private weekService: WeekService,
+    	
+	private sharedService: SharedService,
+    
+	private router: Router) {}
+
+
+onCardClicked(client: Client): void {
+    
+	this.selectedClient = client;
+  
+	//  debugger;
+    
+	console.log("from mainScreen " + this.selectedClient.client.name);
+    
+	//////////////////////////////////////////////////////////
+   
+ 	//I dont user this emit function, instead I use shared service
+   
+	 //this.clientClicked.emit(client);
+   
+ 	////////////////////////////////////
+    
+ 
+  
+	 //send selected client to shared service
+    
+	//shared between appComponent to mainScreenComponent
+   
+ 	this.sharedService.emitChange(client);
+
+    
+
+	this.router.navigateByUrl('/delivery-screen');
+  
+	}
+
+delivery.screen.component
+
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { SharedService } from '../services/shared.service';
+import { Client } from '../models/client.model';
+
+import { ClientDetilsComponent } from '../client-detils/client-detils.component';
+
+import { NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+
+constructor(private sharedService: SharedService) 
+{
+    
+	//this.currentClient = new Client();
+    
+	sharedService.changeEmitted$.subscribe(
+     
+ 	client => {this.selectedClientClicked(client);});
+  
+}
+
+ selectedClientClicked(client: Client) 
+{
+
+    
+	console.log("from deliveryScreen " + client.client.name);
+    
+	this.currentClient = client;
+}
+
+app.module.ts
+
+ 	imports: [
+    
+		RouterModule.forRoot(appRoutes),
+    
+		BrowserModule,
+    FormsModule,
+  ],
+  
+
+		providers: [ ClientService, WeekService, SharedService ],
+  
+		bootstrap: [ AppComponent ]
+
+})
