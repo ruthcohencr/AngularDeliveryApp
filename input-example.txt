@@ -1,0 +1,110 @@
+input implement
+child
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from "../../product/product";
+
+@Component({
+  selector: 'app-more-details',
+  templateUrl: './more-details.component.html',
+  styleUrls: ['./more-details.component.css']
+})
+
+export class MoreDetailsComponent {
+
+  @Input() selectedProduct: Product;
+  @Input() moreDetailsCurrentPage: string;
+  private currentProduct;
+  private inPage: string;
+
+  constructor() {
+    this.currentProduct = new Product();
+    console.log('from constructor ' + this.moreDetailsCurrentPage)
+  }
+
+  ngOnChanges(changes: any) {
+
+    let product = changes.selectedProduct.currentValue;
+    if (product != undefined && product != null)
+    { this.currentProduct = product; }
+
+    let page = changes.moreDetailsCurrentPage.currentValue;
+    if (page != undefined) {
+      this.inPage = page;
+    }
+    console.log(changes);
+    console.log(page);
+    // let productList = changes.productArray.currentValue;
+    // let productFromList = productList.find(x=>x.name == product.name);
+
+  }
+}
+
+father.ts
+
+import { Component, OnInit, Input } from '@angular/core';
+import { Product } from "../../product/product";
+
+@Component({
+  selector: 'app-more-details',
+  templateUrl: './more-details.component.html',
+  styleUrls: ['./more-details.component.css']
+})
+
+export class MoreDetailsComponent {
+
+  @Input() selectedProduct: Product;
+  @Input() moreDetailsCurrentPage: string;
+  private currentProduct;
+  private inPage: string;
+
+  constructor() {
+    this.currentProduct = new Product();
+    console.log('from constructor ' + this.moreDetailsCurrentPage)
+  }
+
+  ngOnChanges(changes: any) {
+
+    let product = changes.selectedProduct.currentValue;
+    if (product != undefined && product != null)
+    { this.currentProduct = product; }
+
+    let page = changes.moreDetailsCurrentPage.currentValue;
+    if (page != undefined) {
+      this.inPage = page;
+    }
+    console.log(changes);
+    console.log(page);
+    // let productList = changes.productArray.currentValue;
+    // let productFromList = productList.find(x=>x.name == product.name);
+
+  }
+}
+
+father.html
+<div id="container">
+    <!-- <h2>רשימת המוצרים המובילים</h2> -->
+    <ul>
+        <div (click)="onChosenItem(product);" *ngFor="let product of productArray"
+         
+        [ngClass]="{'chosen':product==selectedProduct}">
+            <div>
+                <div class="item" *ngIf="product!=null">
+                    <p>{{product.name}}</p>
+                    <div class="imageItem">
+                        <img *ngIf="product.image != null" [src]="product.image" id="productImage">
+                        <img *ngIf="product.image == null" [src]="" id="productImage">
+                    </div>
+                    <div id="price">{{product.price}}</div>
+                    <div class="btnShopping">
+                        <button class="btn btn-primary" (click)="onClick(product)" type="button">הוסף לסל</button>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="product==selectedProduct">
+                <app-more-details [moreDetailsCurrentPage]="selectedPage" [selectedProduct]="selectedProduct">
+                </app-more-details>
+            </div>
+        </div>
+    </ul>
+</div>
+

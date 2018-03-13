@@ -1,0 +1,55 @@
+
+
+
+onRemove(course){
+     let index = this.courses.indexOf(course);
+     this.courses.splice(index,1);
+}
+
+
+<button
+	[ngStyle]="{
+		'backgroundColor': canSave ? 'blue' : 'gray',
+		'color': canSave ? 'white' : 'black'
+	}">
+</button>
+
+
+<span
+	[ngClass] = "{
+		'btnSelcted' : isSelcted,
+		'btn' : !isSelected
+	}" 
+	(click)="onClick()">
+</span>
+
+
+property binding
+
+bind only from component to the view
+
+view
+<input [value]="email" (keyup.enter)="onKeyUp()"/>
+
+component.ts
+
+email = "me@example.com';
+
+onKeyUp(){
+     console.log(this.email);
+}
+
+directives
+
+ngFor  ngIf  ngModel
+
+
+ngModel
+
+view
+<input [(ngModel)]="email" (keyup.enter)="onKeyUp()"/>
+
+app.module.ts
+import { FormsModule } from '@angular/forms';
+
+imports [ FormsModule ]
