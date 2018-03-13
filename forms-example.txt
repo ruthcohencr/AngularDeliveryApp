@@ -1,0 +1,50 @@
+<div class="container">
+  <!-- <h3>עמוד </h3> -->
+  <form autocomplete="off" #newProductForm="ngForm" (ngSubmit)="registerProduct(newProductForm)"  class="productForm" >
+    <fieldset>
+      
+      <legend><h3>הוספת מוצר חדש</h3></legend>
+      <!-- form-group class is bootstrap required -->
+      <div class="form-group">
+        <label for="name">שם מוצר:</label>
+        <input required minlength="4" maxlength="25" ngModel name="name" #name="ngModel" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+          <div *ngIf="name.errors.required">שם מוצר הכרחי
+          </div>
+          <div *ngIf="name.errors.minlength || name.errors.maxlength">
+            שם מוצר בין {{name.errors.minlength.requiredLength}} ל-25 תווים
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">תיאור מוצר:</label>
+        <textarea ngModel required minlength="10" name="description" #description="ngModel" class="form-control" cols="30" rows="5"></textarea>
+        <div class="alert alert-danger" *ngIf="description.touched && !description.valid">
+          <div *ngIf="description.errors.required">תיאור מוצר הכרחי</div>
+          <div *ngIf="description.errors.minlength">תיאור מוצר חייב מינימום של {{description.errors.minlength.requiredLength}} תווים </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">מחיר:</label>
+        <input ngModel name="price" 
+        type="text" #price="ngModel" required class="form-control">
+        <div class="alert alert-danger" *ngIf="price.touched && !price.valid"> 
+          <div *ngIf="price.errors.required">מחיר הכרחי</div>
+        </div>
+      </div>
+   
+
+      <div class="form-group">
+        <label for="image">כתובת תמונה:</label>
+        <input ngModel name="image" type="text" class="form-control">
+      </div>
+
+    </fieldset>
+    <p>
+      <button class="btn btn-primary" type="submit">הוסף מוצר חדש</button>
+    </p>
+  </form>
+</div>
+<back-ground-image></back-ground-image>

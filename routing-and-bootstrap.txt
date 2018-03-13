@@ -1,0 +1,102 @@
+app.module.ts
+
+import { BrowserModule } from '@angular/platform-browser';
+
+import { NgModule } from '@angular/core';
+
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes : Routes = [
+  
+	{ path: "splash-screen", component: SplashScreenComponent },
+  
+	{ path: "main-screen", component: MainScreenComponent },
+ 
+ 	{ path: "delivery-screen", component: DeliveryscreenComponent },
+
+ 	{ path: "", component: MainScreenComponent }
+
+];
+
+imports: 
+	[
+    RouterModule.forRoot(appRoutes),
+    
+	BrowserModule,
+    
+	FormsModule,
+  
+],
+
+app.component.html
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+<div style="text-align:center">
+ 
+ <h1>
+    
+Welcome to {{ title }}!
+  
+</h1>
+
+</div>
+
+
+<div class="container">
+
+	<nav>
+  <ul class="nav nav-pills">
+ 
+  		 <li>
+      <a routerLink="/splash-screen" class="active">welcome</a>
+    </li>
+    
+		<li>
+      <a routerLink="/main-screen">main screen</a>
+    </li>
+
+    		<li>
+      <a routerLink="/delivery-screen">delivery screen</a>
+    </li>
+
+  		</ul>
+ 
+ 	<router-outlet></router-outlet>
+
+	</nav>
+</div>
+
+add bootstrap
+
+in main directory
+npm install --save bootstarp
+
+angular.cli.json
+
+"styles": [
+       
+ "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        
+"styles.css"
+     ],
+
+app.component.ts
+look up.
+
+<link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
+
+
+more routing
+
+<nav>
+  <ul class="nav nav-pills">
+    <li role="presentation" [ngClass]="{'active':localCurrentPage =='HomePage'}"><a class="myNav" routerLink="/home" href="#" (click)="onClick('HomePage')">עמוד הבית</a></li>
+    <li role="presentation" [ngClass]="{'active':localCurrentPage =='ProductsPage'}"><a class="myNav" routerLink="/product-page" href="#" (click)="onClick('ProductsPage')">מוצרי החנות</a></li>
+    <li role="presentation" [ngClass]="{'active':localCurrentPage =='ContactUs'}"><a class="myNav" routerLink="/contact-us" href="#" (click)="onClick('ContactUs')">יצירת קשר</a></li>
+    <li role="presentation" [ngClass]="{'active':localCurrentPage =='AddProductPage'}"><a class="myNav" routerLink="/add-new-product" href="#" (click)="onClick('AddProductPage')">הוסף מוצר חדש</a></li>
+
+  </ul>
+</nav>
+<router-outlet></router-outlet>
